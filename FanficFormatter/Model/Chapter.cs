@@ -25,9 +25,9 @@ namespace FanficFormatter.Model
         public Chapter(
             int number,
             string? synopsis,
-            DateTime lastModified,
+            string lastModified,
             List<string>? revisions,
-            string? remarks,
+            List<string>? remarks,
             List<string> content,
             Fanfic fanfic)
         {
@@ -44,11 +44,11 @@ namespace FanficFormatter.Model
 
         public string? Synopsis { get; }
 
-        public DateTime LastModified { get; }
+        public string LastModified { get; }
 
         public List<string>? Revisions { get; }
 
-        public string? Remarks { get; }
+        public List<string>? Remarks { get; }
 
         public List<string> Content { get; }
 

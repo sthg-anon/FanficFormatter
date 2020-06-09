@@ -35,9 +35,9 @@ namespace FanficFormatter.Model.Json
         public JsonChapterInfo(
             int number,
             string? synopsis,
-            DateTime lastModified,
+            string lastModified,
             List<string>? revisions,
-            string? remarks,
+            List<string>? remarks,
             string contentFile)
         {
             Number = number;
@@ -63,7 +63,7 @@ namespace FanficFormatter.Model.Json
         ///     Gets the last modified time.
         /// </summary>
         [JsonRequired]
-        public DateTime LastModified { get; }
+        public string LastModified { get; }
 
         /// <summary>
         ///     Gets the list of revision remarks.
@@ -73,7 +73,7 @@ namespace FanficFormatter.Model.Json
         /// <summary>
         ///     Gets the remarks about the chapter itself.
         /// </summary>
-        public string? Remarks { get; }
+        public List<string>? Remarks { get; }
 
         [JsonRequired]
         public string ContentFile { get; }

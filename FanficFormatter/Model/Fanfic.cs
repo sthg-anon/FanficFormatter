@@ -12,6 +12,8 @@
 //
 // 0. You just DO WHAT THE FUCK YOU WANT TO.
 
+using System.Linq;
+
 namespace FanficFormatter.Model
 {
     using System.Collections.Generic;
@@ -49,5 +51,10 @@ namespace FanficFormatter.Model
         }
 
         public ReadOnlyCollection<Chapter> Chapters => _chapters.AsReadOnly();
+
+        public bool HasChapter(int number)
+        {
+            return _chapters.Any(c => c.Number == number);
+        }
     }
 }
