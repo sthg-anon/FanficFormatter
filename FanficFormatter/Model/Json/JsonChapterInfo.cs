@@ -12,7 +12,7 @@
 //
 // 0. You just DO WHAT THE FUCK YOU WANT TO.
 
-namespace FanficFormatter.Model
+namespace FanficFormatter.Model.Json
 {
     using System;
     using System.Collections.Generic;
@@ -21,10 +21,10 @@ namespace FanficFormatter.Model
     /// <summary>
     ///     Metadata about a fanfic chapter.
     /// </summary>
-    public class ChapterInfo
+    public class JsonChapterInfo
     {
         /// <summary>
-        ///     Initializes a new instance of the <see cref="ChapterInfo"/> class.
+        ///     Initializes a new instance of the <see cref="JsonChapterInfo"/> class.
         /// </summary>
         /// <param name="number">The chapter number.</param>
         /// <param name="synopsis">The synopsis.</param>
@@ -33,7 +33,7 @@ namespace FanficFormatter.Model
         /// <param name="revisions">The revision remarks.</param>
         /// <param name="remarks">Remarks about this chapter.</param>
         [JsonConstructor]
-        public ChapterInfo(
+        public JsonChapterInfo(
             int number,
             string synopsis,
             string currentRevision,

@@ -12,23 +12,23 @@
 //
 // 0. You just DO WHAT THE FUCK YOU WANT TO.
 
-namespace FanficFormatter.Model
+namespace FanficFormatter.Model.Json
 {
     using Newtonsoft.Json;
 
     /// <summary>
     ///     Contains common information about the fanfic.
     /// </summary>
-    public class FanficDescriptor
+    public class JsonFanficDescriptor
     {
         /// <summary>
-        ///     Initializes a new instance of the <see cref="FanficDescriptor"/> class.
+        ///     Initializes a new instance of the <see cref="JsonFanficDescriptor"/> class.
         /// </summary>
         /// <param name="title">The fanfic title.</param>
         /// <param name="license">The creative commons license abbreviation.</param>
         /// <param name="synopsis">The fanfic synopsis.</param>
         [JsonConstructor]
-        public FanficDescriptor(string title, string license, string synopsis)
+        public JsonFanficDescriptor(string title, string license, string synopsis)
         {
             Title = title;
             License = license;
