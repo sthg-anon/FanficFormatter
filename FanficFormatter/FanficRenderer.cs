@@ -66,7 +66,7 @@ namespace FanficFormatter
         private static void WriteHeader(string headerImage, string imageDir)
         {
             var extension = Path.GetExtension(headerImage);
-            var headerDestination = Path.Join(imageDir, $"header.{extension}");
+            var headerDestination = Path.Join(imageDir, $"header{extension}");
             try
             {
                 File.Copy(headerImage, headerDestination);
@@ -215,7 +215,8 @@ namespace FanficFormatter
 
             if (fanfic.HeaderImage != null)
             {
-                sb.Append($@"<img src=""{fanfic.HeaderImage}"" alt=""{fanfic.HeaderAlt}""/>");
+                var extension = Path.GetExtension(fanfic.HeaderImage);
+                sb.Append($@"<img src=""image/header{extension}"" alt=""{fanfic.HeaderAlt}""/>");
             }
 
             sb.Append("<h2>Table of Contents</h2>");
