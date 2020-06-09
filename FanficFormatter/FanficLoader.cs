@@ -85,27 +85,35 @@ namespace FanficFormatter
             var jsonPath = Path.Join(path, FanficJsonName);
             if (!File.Exists(jsonPath))
             {
-                throw new FanficLoadException($"Unable to find {path}!");
+                throw new FanficLoadException($"Unable to find {jsonPath}!");
             }
 
             string jsonData;
             try
             {
-                jsonData = File.ReadAllText(path);
+                jsonData = File.ReadAllText(jsonPath);
             }
             catch (Exception e)
             {
-                throw new FanficLoadException($"Unable to read file {path}: {e.Message}", e);
+                throw new FanficLoadException($"Unable to read file {jsonPath}: {e.Message}", e);
             }
 
+            JsonFanficDescriptor descriptor;
             try
             {
-                return JsonConvert.DeserializeObject<JsonFanficDescriptor>(jsonData);
+                descriptor = JsonConvert.DeserializeObject<JsonFanficDescriptor>(jsonData);
             }
             catch (Exception e)
             {
-                throw new FanficLoadException($"Unable to parse {path}: {e.Message}", e);
+                throw new FanficLoadException($"Unable to parse {jsonPath}: {e.Message}", e);
             }
+
+            if (descriptor == null)
+            {
+                throw new FanficLoadException($"File {jsonPath} is empty!");
+            }
+
+            return descriptor;
         }
     }
 }

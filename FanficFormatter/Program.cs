@@ -14,6 +14,7 @@
 
 namespace FanficFormatter
 {
+    using FanficFormatter.Model;
     using Serilog;
 
     /// <summary>
@@ -27,7 +28,15 @@ namespace FanficFormatter
                 .WriteTo.Console()
                 .CreateLogger();
 
-            Log.Information("Hello, world!");
+            Fanfic fanfic;
+            try
+            {
+                fanfic = FanficLoader.Load("TestFic");
+            }
+            catch (FanficLoadException e)
+            {
+                Log.Fatal(e, "Unable to load fanfic!");
+            }
         }
     }
 }
