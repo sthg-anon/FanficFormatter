@@ -12,6 +12,8 @@
 //
 // 0. You just DO WHAT THE FUCK YOU WANT TO.
 
+using Serilog;
+
 namespace FanficFormatter
 {
     using System;
@@ -23,7 +25,11 @@ namespace FanficFormatter
     {
         private static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            Log.Logger = new LoggerConfiguration()
+                .WriteTo.Console()
+                .CreateLogger();
+
+            Log.Information("Hello, world!");
         }
     }
 }
