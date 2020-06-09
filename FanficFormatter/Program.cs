@@ -12,11 +12,9 @@
 //
 // 0. You just DO WHAT THE FUCK YOU WANT TO.
 
-using Serilog;
-
 namespace FanficFormatter
 {
-    using System;
+    using Serilog;
 
     /// <summary>
     ///     Contains the main program entry point.

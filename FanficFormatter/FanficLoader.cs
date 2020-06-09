@@ -21,10 +21,13 @@ namespace FanficFormatter
     using FanficFormatter.Model;
     using FanficFormatter.Model.Json;
     using Newtonsoft.Json;
+    using Serilog;
 
     public static class FanficLoader
     {
         private const string FanficJsonName = "fanfic.json";
+
+        private static readonly ILogger Log = Serilog.Log.ForContext(typeof(FanficLoader));
 
         public static Fanfic Load(string path)
         {
@@ -42,7 +45,7 @@ namespace FanficFormatter
                 }
                 catch (FanficLoadException e)
                 {
-                    Console.WriteLine(e.Message);
+                    Log.Error(e, "Failed to load chapter {number} content!", jsonChapter.Number);
                     continue;
                 }
 
