@@ -28,18 +28,16 @@ namespace FanficFormatter.Model
             DateTime lastModified,
             List<string>? revisions,
             string? remarks,
-            bool hasNext,
-            bool hasPrevious,
-            List<string> content)
+            List<string> content,
+            Fanfic fanfic)
         {
             Number = number;
             Synopsis = synopsis;
             LastModified = lastModified;
             Revisions = revisions;
             Remarks = remarks;
-            HasNext = hasNext;
-            HasPrevious = hasPrevious;
             Content = content;
+            Fanfic = fanfic;
         }
 
         public int Number { get; }
@@ -52,10 +50,8 @@ namespace FanficFormatter.Model
 
         public string? Remarks { get; }
 
-        public bool HasNext { get; }
-
-        public bool HasPrevious { get; }
-
         public List<string> Content { get; }
+
+        public Fanfic Fanfic { get; }
     }
 }

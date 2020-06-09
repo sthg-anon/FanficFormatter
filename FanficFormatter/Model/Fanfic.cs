@@ -15,15 +15,18 @@
 namespace FanficFormatter.Model
 {
     using System.Collections.Generic;
+    using System.Collections.ObjectModel;
+    using FanficFormatter.Model.Json;
 
     public class Fanfic
     {
-        public Fanfic(string title, string license, string? synopsis, List<Chapter> chapters)
+        private readonly List<Chapter> _chapters = new List<Chapter>();
+
+        public Fanfic(string title, string license, string? synopsis)
         {
             Title = title;
             License = license;
             Synopsis = synopsis;
-            Chapters = chapters;
         }
 
         public string Title { get; }
@@ -32,6 +35,19 @@ namespace FanficFormatter.Model
 
         public string? Synopsis { get; }
 
-        public List<Chapter> Chapters { get; }
+        public void AddChapter(JsonChapterInfo jsonChapter, List<string> content)
+        {
+            var chapter = new Chapter(
+                jsonChapter.Number,
+                jsonChapter.Synopsis,
+                jsonChapter.LastModified,
+                jsonChapter.Revisions,
+                jsonChapter.Remarks,
+                content,
+                this);
+            _chapters.Add(chapter);
+        }
+
+        public ReadOnlyCollection<Chapter> Chapters => _chapters.AsReadOnly();
     }
 }
