@@ -1,0 +1,48 @@
+{
+	"Title": "Sonic the Blindhog",
+	"License": "CC0",
+	"Synopsis": "One of Eggman's devious schemes goes to far, and Sonic is left completely blind! What will Sonic do? Who will fill his shoes? Will Eggman finally achieve his goals? Will Sonic ever see again?",
+	"HeaderImage": "sonic_the_blindhog.png",
+	"HeaderAlt": "Sonic The Blindhog",
+	"Chapters": [
+		{
+			"Number": 1,
+			"Synopsis": "Sonic and Eggman are in a routine encounter when Eggman tries out an experimental weapon.",
+			"LastModified": "July 25th, 2016",
+			"Revisions": [
+				"First Draft",
+				"Polished some writing. Chemicals cause a cold and burning sensation."
+			],
+			"Remarks": [
+				"Looks like I'm going with a more serious Eggman, which I think makes sense, given the nature of this fanfic. While goofy Eggman is always fun, I like my villains to be a bit more threatening. I guess the SA2 eggman comes to mind the most, but Archie Eggman is a bit of an inspiration as well.",
+				"I'm just going with modern sonic here. With his banters and playfulness. Really though, I'm going to have to take a lot of liberty with this character given what I have in store for him."
+			],
+			"ContentFile": "chapter_1.txt"
+		},
+		{
+			"Number": 2,
+			"Synopsis": "Tails and Amy wait on Cocoa Island for news on Sonic's injuries. While waiting, they encounter someone unexpected.",
+			"LastModified": "July 27, 2016",
+			"Revisions": [
+				"First Draft"
+			],
+			"Remarks": [
+				"I did not really enjoy writing this chapter. Awfully depressing! Then again, I guess this fanfic will get a little depressing. I just didn't really get a kick out of writing people close to crying. At the end of the day though, I did need Amy and Tails to express some emotion. It's not like they'd just be chill with Sonic being in the ICU.",
+				"Nothing really happened in this chapter, but it accomplished its main goal. Its main goal being to send Shadow off to fight Eggman."
+			],
+			"ContentFile": "chapter_2.txt"
+		},
+		{
+			"Number": 3,
+			"Synopsis": "Shadow tries to confront Eggman about chemical warfare, but things don't go as planned.",
+			"LastModified": "July 28, 2016",
+			"Revisions": [
+				"First Draft"
+			],
+			"Remarks": [
+				"This chapter was a bit more interesting to write than the last one. I sort of realized a plot hole with my story. That is, why hasn't Shadow been doing anything to stop Eggman until now? I try to answer that by just saying that Shadow doesn't really care, as long as Eggman stays out of his way. Shadow is neutral. Now that things haven't gone well with Shadow and Eggman, Shadow has a motive to be against eggman, which will work well for my story."
+			],
+			"ContentFile": "chapter_3.txt"
+		}
+	]
+}
