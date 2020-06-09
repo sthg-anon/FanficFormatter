@@ -28,7 +28,6 @@ namespace FanficFormatter.Model.Json
         /// </summary>
         /// <param name="number">The chapter number.</param>
         /// <param name="synopsis">The synopsis.</param>
-        /// <param name="currentRevision">The current revision letter.</param>
         /// <param name="lastModified">The last modified date.</param>
         /// <param name="revisions">The revision remarks.</param>
         /// <param name="remarks">Remarks about this chapter.</param>
@@ -36,14 +35,12 @@ namespace FanficFormatter.Model.Json
         public JsonChapterInfo(
             int number,
             string? synopsis,
-            string? currentRevision,
             DateTime lastModified,
             List<string>? revisions,
             string? remarks)
         {
             Number = number;
             Synopsis = synopsis;
-            CurrentRevision = currentRevision;
             LastModified = lastModified;
             Revisions = revisions;
             Remarks = remarks;
@@ -59,11 +56,6 @@ namespace FanficFormatter.Model.Json
         ///     Gets the chapter synopsis.
         /// </summary>
         public string? Synopsis { get; }
-
-        /// <summary>
-        ///     Gets the current revision letter.
-        /// </summary>
-        public string? CurrentRevision { get; }
 
         /// <summary>
         ///     Gets the last modified time.
