@@ -23,6 +23,7 @@ namespace FanficFormatter
     public static class FanficRenderer
     {
         private const string StyleFolder = "style";
+        private const string ImageFolder = "image";
 
         private const string StyleCss =
             "body {\r\n    font-family: 'Open Sans', sans-serif;\r\n    margin: 0 auto;\r\n    width: 32em;\r\n}\r\n\r\np {\r\n    font-size: 1.1em;\r\n    width: 560px;\r\n    line-height: 1.6em;\r\n}\r\n\r\nimg {\r\n    max-width: 100%;\r\n    height: auto;\r\n}\r\n\r\n.nav {\r\n    display: grid;\r\n    grid-template-columns: 40% 40% 20%;\r\n    grid-template-rows: 100%;\r\n}\r\n\r\n.nav .prev {\r\n    grid-column-start: 1;\r\n}\r\n\r\n.nav .contents {\r\n    grid-column-start: 2;\r\n}\r\n\r\n.nav .next {\r\n    grid-column-start: 3;\r\n}\r\n\r\n.skip {\r\n    text-align: center;\r\n}";
@@ -33,11 +34,13 @@ namespace FanficFormatter
         public static void Render(Fanfic fanfic, string path)
         {
             var styleDir = Path.Join(path, StyleFolder);
+            var imageDir = Path.Join(path, ImageFolder);
 
             try
             {
                 Directory.CreateDirectory(path);
                 Directory.CreateDirectory(styleDir);
+                Directory.CreateDirectory(imageDir);
             }
             catch (Exception e)
             {
@@ -47,11 +50,30 @@ namespace FanficFormatter
             WriteFile(StyleCss, styleDir, "style.css");
             WriteFile(ResetCss, styleDir, "CSS-Mini-Reset-min.css");
 
+            if (fanfic.HeaderImage != null)
+            {
+                WriteHeader(fanfic.HeaderImage, imageDir);
+            }
+
             WriteFile(RenderMain(fanfic), path, "index.xhtml");
 
             foreach (var chapter in fanfic.Chapters)
             {
                 WriteFile(RenderChapter(chapter), path, $"chapter_{chapter.Number}.xhtml");
+            }
+        }
+
+        private static void WriteHeader(string headerImage, string imageDir)
+        {
+            var extension = Path.GetExtension(headerImage);
+            var headerDestination = Path.Join(imageDir, $"header.{extension}");
+            try
+            {
+                File.Copy(headerImage, headerDestination);
+            }
+            catch (Exception e)
+            {
+                throw new FanficRenderException($"Unable to copy header image to {headerDestination}!", e);
             }
         }
 
@@ -189,6 +211,11 @@ namespace FanficFormatter
             if (fanfic.Synopsis != null)
             {
                 sb.Append($"<p>{fanfic.Synopsis}</p>");
+            }
+
+            if (fanfic.HeaderImage != null)
+            {
+                sb.Append($@"<img src=""{fanfic.HeaderImage}"" alt=""{fanfic.HeaderAlt}""/>");
             }
 
             sb.Append("<h2>Table of Contents</h2>");

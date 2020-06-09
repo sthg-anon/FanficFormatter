@@ -32,7 +32,7 @@ namespace FanficFormatter
         public static Fanfic Load(string path)
         {
             var descriptor = LoadDescriptor(path);
-            var fanfic = ConvertFanfic(descriptor);
+            var fanfic = ConvertFanfic(descriptor, path);
 
             foreach (var jsonChapter in descriptor.Chapters)
             {
@@ -75,9 +75,10 @@ namespace FanficFormatter
             return lines.Where(line => !string.IsNullOrWhiteSpace(line)).ToList();
         }
 
-        private static Fanfic ConvertFanfic(JsonFanficDescriptor descriptor)
+        private static Fanfic ConvertFanfic(JsonFanficDescriptor descriptor, string path)
         {
-            return new Fanfic(descriptor.Title, descriptor.License, descriptor.Synopsis);
+            var headerPath = Path.Join(path, descriptor.HeaderImage);
+            return new Fanfic(descriptor.Title, descriptor.License, descriptor.Synopsis, Path.GetFullPath(headerPath), descriptor.HeaderAlt);
         }
 
         private static JsonFanficDescriptor LoadDescriptor(string path)
@@ -111,6 +112,15 @@ namespace FanficFormatter
             if (descriptor == null)
             {
                 throw new FanficLoadException($"File {jsonPath} is empty!");
+            }
+
+            if (descriptor.HeaderImage != null)
+            {
+                var headerImagePath = Path.Join(path, descriptor.HeaderImage);
+                if (!File.Exists(headerImagePath))
+                {
+                    throw new FanficLoadException($"Unable to find file {headerImagePath}!");
+                }
             }
 
             return descriptor;

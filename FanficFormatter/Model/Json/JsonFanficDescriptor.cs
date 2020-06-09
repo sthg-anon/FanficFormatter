@@ -30,12 +30,14 @@ namespace FanficFormatter.Model.Json
         /// <param name="synopsis">The fanfic synopsis.</param>
         /// <param name="chapters">The list of chapters.</param>
         [JsonConstructor]
-        public JsonFanficDescriptor(string title, string license, string? synopsis, List<JsonChapterInfo> chapters)
+        public JsonFanficDescriptor(string title, string license, string? synopsis, List<JsonChapterInfo> chapters, string? headerImage, string? headerAlt)
         {
             Title = title;
             License = license;
             Synopsis = synopsis;
             Chapters = chapters;
+            HeaderImage = headerImage;
+            HeaderAlt = headerAlt;
         }
 
         /// <summary>
@@ -59,5 +61,9 @@ namespace FanficFormatter.Model.Json
         ///     Gets the list of chapters.
         /// </summary>
         public List<JsonChapterInfo> Chapters { get; }
+
+        public string? HeaderImage { get; }
+
+        public string? HeaderAlt { get; }
     }
 }

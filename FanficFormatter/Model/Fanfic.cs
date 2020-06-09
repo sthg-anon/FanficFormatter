@@ -24,11 +24,13 @@ namespace FanficFormatter.Model
     {
         private readonly List<Chapter> _chapters = new List<Chapter>();
 
-        public Fanfic(string title, string license, string? synopsis)
+        public Fanfic(string title, string license, string? synopsis, string? headerImage, string? headerAlt)
         {
             Title = title;
             License = license;
             Synopsis = synopsis;
+            HeaderImage = headerImage;
+            HeaderAlt = headerAlt;
         }
 
         public string Title { get; }
@@ -36,6 +38,10 @@ namespace FanficFormatter.Model
         public string License { get; }
 
         public string? Synopsis { get; }
+
+        public string? HeaderImage { get; }
+
+        public string? HeaderAlt { get; }
 
         public void AddChapter(JsonChapterInfo jsonChapter, List<string> content)
         {
