@@ -14,11 +14,20 @@
 
 namespace FanficFormatter.Model
 {
+    using Newtonsoft.Json;
+
     /// <summary>
     ///     Contains common information about the fanfic.
     /// </summary>
     public class FanficDescriptor
     {
+        /// <summary>
+        ///     Initializes a new instance of the <see cref="FanficDescriptor"/> class.
+        /// </summary>
+        /// <param name="title">The fanfic title.</param>
+        /// <param name="license">The creative commons license abbreviation.</param>
+        /// <param name="synopsis">The fanfic synopsis.</param>
+        [JsonConstructor]
         public FanficDescriptor(string title, string license, string synopsis)
         {
             Title = title;
@@ -26,10 +35,19 @@ namespace FanficFormatter.Model
             Synopsis = synopsis;
         }
 
+        /// <summary>
+        ///     Gets the fanfic title.
+        /// </summary>
         public string Title { get; }
 
+        /// <summary>
+        ///     Gets the creative commons license abbreviation.
+        /// </summary>
         public string License { get; }
 
+        /// <summary>
+        ///     Gets the synopsis.
+        /// </summary>
         public string Synopsis { get; }
     }
 }

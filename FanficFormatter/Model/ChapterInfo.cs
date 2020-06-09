@@ -16,6 +16,7 @@ namespace FanficFormatter.Model
 {
     using System;
     using System.Collections.Generic;
+    using Newtonsoft.Json;
 
     /// <summary>
     ///     Metadata about a fanfic chapter.
@@ -23,18 +24,59 @@ namespace FanficFormatter.Model
     public class ChapterInfo
     {
         /// <summary>
-        ///     The chapter number (chapter 1, chapter 2, chapter n, ...).
+        ///     Initializes a new instance of the <see cref="ChapterInfo"/> class.
+        /// </summary>
+        /// <param name="number">The chapter number.</param>
+        /// <param name="synopsis">The synopsis.</param>
+        /// <param name="currentRevision">The current revision letter.</param>
+        /// <param name="lastModified">The last modified date.</param>
+        /// <param name="revisions">The revision remarks.</param>
+        /// <param name="remarks">Remarks about this chapter.</param>
+        [JsonConstructor]
+        public ChapterInfo(
+            int number,
+            string synopsis,
+            string currentRevision,
+            DateTime lastModified,
+            List<string> revisions,
+            string remarks)
+        {
+            Number = number;
+            Synopsis = synopsis;
+            CurrentRevision = currentRevision;
+            LastModified = lastModified;
+            Revisions = revisions;
+            Remarks = remarks;
+        }
+
+        /// <summary>
+        ///     Gets the chapter number (chapter 1, chapter 2, chapter n, ...).
         /// </summary>
         public int Number { get; }
 
+        /// <summary>
+        ///     Gets the chapter synopsis.
+        /// </summary>
         public string Synopsis { get; }
 
+        /// <summary>
+        ///     Gets the current revision letter.
+        /// </summary>
         public string CurrentRevision { get; }
 
+        /// <summary>
+        ///     Gets the last modified time.
+        /// </summary>
         public DateTime LastModified { get; }
 
+        /// <summary>
+        ///     Gets the list of revision remarks.
+        /// </summary>
         public List<string> Revisions { get; }
 
+        /// <summary>
+        ///     Gets the remarks about the chapter itself.
+        /// </summary>
         public string Remarks { get; }
     }
 }
