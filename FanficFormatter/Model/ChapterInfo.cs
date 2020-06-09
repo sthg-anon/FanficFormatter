@@ -18,9 +18,9 @@ namespace FanficFormatter.Model
     using System.Collections.Generic;
 
     /// <summary>
-    ///     A fanfic chapter.
+    ///     Metadata about a fanfic chapter.
     /// </summary>
-    public class Chapter
+    public class ChapterInfo
     {
         /// <summary>
         ///     The chapter number (chapter 1, chapter 2, chapter n, ...).
@@ -28,8 +28,6 @@ namespace FanficFormatter.Model
         public int Number { get; }
 
         public string Synopsis { get; }
-
-        public List<string> Lines { get; }
 
         public string CurrentRevision { get; }
 
