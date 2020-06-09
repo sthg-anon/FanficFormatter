@@ -12,6 +12,8 @@
 //
 // 0. You just DO WHAT THE FUCK YOU WANT TO.
 
+using System.Diagnostics;
+
 namespace FanficFormatter
 {
     using FanficFormatter.Model;
@@ -22,20 +24,27 @@ namespace FanficFormatter
     /// </summary>
     internal static class Program
     {
+        private const string InDir = "TestFic";
+        private const string outDir = "TestFicHtml";
+
         private static void Main(string[] args)
         {
             Log.Logger = new LoggerConfiguration()
                 .WriteTo.Console()
                 .CreateLogger();
 
-            Fanfic fanfic;
             try
             {
-                fanfic = FanficLoader.Load("TestFic");
+                var fanfic = FanficLoader.Load(InDir);
+                FanficRenderer.Render(fanfic, outDir);
             }
             catch (FanficLoadException e)
             {
                 Log.Fatal(e, "Unable to load fanfic!");
+            }
+            catch (FanficRenderException e)
+            {
+                Log.Fatal(e, "Unable to write fanfic!");
             }
         }
     }
