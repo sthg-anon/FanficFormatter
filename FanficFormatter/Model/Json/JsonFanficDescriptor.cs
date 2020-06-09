@@ -28,7 +28,7 @@ namespace FanficFormatter.Model.Json
         /// <param name="license">The creative commons license abbreviation.</param>
         /// <param name="synopsis">The fanfic synopsis.</param>
         [JsonConstructor]
-        public JsonFanficDescriptor(string title, string license, string synopsis)
+        public JsonFanficDescriptor(string title, string license, string? synopsis)
         {
             Title = title;
             License = license;
@@ -38,16 +38,18 @@ namespace FanficFormatter.Model.Json
         /// <summary>
         ///     Gets the fanfic title.
         /// </summary>
+        [JsonRequired]
         public string Title { get; }
 
         /// <summary>
         ///     Gets the creative commons license abbreviation.
         /// </summary>
+        [JsonRequired]
         public string License { get; }
 
         /// <summary>
         ///     Gets the synopsis.
         /// </summary>
-        public string Synopsis { get; }
+        public string? Synopsis { get; }
     }
 }
