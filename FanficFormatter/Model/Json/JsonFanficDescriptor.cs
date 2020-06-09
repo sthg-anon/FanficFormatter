@@ -14,6 +14,7 @@
 
 namespace FanficFormatter.Model.Json
 {
+    using System.Collections.Generic;
     using Newtonsoft.Json;
 
     /// <summary>
@@ -27,12 +28,14 @@ namespace FanficFormatter.Model.Json
         /// <param name="title">The fanfic title.</param>
         /// <param name="license">The creative commons license abbreviation.</param>
         /// <param name="synopsis">The fanfic synopsis.</param>
+        /// <param name="chapters">The list of chapters.</param>
         [JsonConstructor]
-        public JsonFanficDescriptor(string title, string license, string? synopsis)
+        public JsonFanficDescriptor(string title, string license, string? synopsis, List<JsonChapterInfo> chapters)
         {
             Title = title;
             License = license;
             Synopsis = synopsis;
+            Chapters = chapters;
         }
 
         /// <summary>
@@ -51,5 +54,10 @@ namespace FanficFormatter.Model.Json
         ///     Gets the synopsis.
         /// </summary>
         public string? Synopsis { get; }
+
+        /// <summary>
+        ///     Gets the list of chapters.
+        /// </summary>
+        public List<JsonChapterInfo> Chapters { get; }
     }
 }
