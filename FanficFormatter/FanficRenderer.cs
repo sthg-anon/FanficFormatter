@@ -69,7 +69,7 @@ namespace FanficFormatter
             var headerDestination = Path.Join(imageDir, $"header{extension}");
             try
             {
-                File.Copy(headerImage, headerDestination);
+                File.Copy(headerImage, headerDestination, true);
             }
             catch (Exception e)
             {
